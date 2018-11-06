@@ -55,6 +55,8 @@ horizontalsizetrap = horizontalsize /sqrt(1+(2.0*pi*xfreq_sp1*tof_sp1*1.0e-3)^2)
 Tv = mass*(2.0*pi*zfreq_sp1*verticalsizetrap*(2^0.5)).^2/(2*kB);
 Th = mass*(2.0*pi*xfreq_sp1*horizontalsizetrap*(2^0.5)).^2/ (2*kB);
 
+pixel_sum_processing_sp1;
+
 switch analysis_type_sp1
     
     case 'Classic'
@@ -62,7 +64,7 @@ switch analysis_type_sp1
         NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigmatotal;
         Nh = (sum(I1)-cx(1)*length(I1))*pixelsize1^2/sigmatotal;
         Nv = (sum(I2)-cz(1)*length(I2))*pixelsize1^2/sigmatotal;
-        N_pxsum = handles.A_sum_sp1*pixelsize1^2/sigmatotal;
+ 
         
     case 'px-by-px'
         
@@ -84,7 +86,7 @@ switch analysis_type_sp1
             end
         end
         
-        N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
+
         
     case 'High Intensity'
         
@@ -106,7 +108,7 @@ switch analysis_type_sp1
             end
         end
         
-        N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
+
         
 end
 

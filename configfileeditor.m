@@ -812,35 +812,7 @@ function edit_FRfiles_sp1_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit_FRfiles_sp1 as text
 %        str2double(get(hObject,'String')) returns contents of edit_FRfiles_sp1 as a double
 
-ref_files_sp1 = get(handles.edit_FRfiles_sp1,'String');
-refnums_sp1 = textscan(ref_files_sp1, '%s','delimiter',',');
-
-refnums_sp1 = refnums_sp1{1};
-
-for count = 1:length(refnums_sp1)
-    ranges_sp1{count} = textscan(refnums_sp1{count}, '%s','delimiter','-');
-end
-
-for count = 1:length(ranges_sp1)    
-    lower(count) = round(str2num(ranges_sp1{count}{1}{1}));    
-    if length(ranges_sp1{count}{1}) == 2        
-        upper(count) = round(str2num(ranges_sp1{count}{1}{2}));        
-    else        
-        upper(count) = 0;        
-    end    
-end
-
-refindex_sp1 = [];
-
-for count = 1:length(ranges_sp1)
-    if upper(count) ~= 0
-        refindex_sp1(length(refindex_sp1)+1:length(refindex_sp1)+(upper(count)-lower(count))+1) = lower(count):1:upper(count);
-    else
-        refindex_sp1(length(refindex_sp1)+1) = lower(count);
-    end
-end
-
-save('configdata','refindex_sp1','-append');
+get_fr_file_range_sp1;
 
 
 % --- Executes during object creation, after setting all properties.
@@ -865,35 +837,7 @@ function edit_FRfiles_sp2_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit_FRfiles_sp2 as text
 %        str2double(get(hObject,'String')) returns contents of edit_FRfiles_sp2 as a double
 
-ref_files_sp2 = get(handles.edit_FRfiles_sp2,'String');
-refnums_sp2 = textscan(ref_files_sp2, '%s','delimiter',',');
-
-refnums_sp2 = refnums_sp2{1};
-
-for count = 1:length(refnums_sp2)
-    ranges_sp2{count} = textscan(refnums_sp2{count}, '%s','delimiter','-');
-end
-
-for count = 1:length(ranges_sp2)    
-    lower(count) = round(str2num(ranges_sp2{count}{1}{1}));    
-    if length(ranges_sp2{count}{1}) == 2        
-        upper(count) = round(str2num(ranges_sp2{count}{1}{2}));        
-    else        
-        upper(count) = 0;        
-    end    
-end
-
-refindex_sp2 = [];
-
-for count = 1:length(ranges_sp2)
-    if upper(count) ~= 0
-        refindex_sp2(length(refindex_sp2)+1:length(refindex_sp2)+(upper(count)-lower(count))+1) = lower(count):1:upper(count);
-    else
-        refindex_sp2(length(refindex_sp2)+1) = lower(count);
-    end
-end
-
-save('configdata','refindex_sp2','-append');
+get_fr_file_range_sp2;
 
 
 % --- Executes during object creation, after setting all properties.

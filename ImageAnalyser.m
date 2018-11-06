@@ -22,7 +22,7 @@ function varargout = ImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help ImageAnalyser
 
-% Last Modified by GUIDE v2.5 09-Mar-2017 15:39:30
+% Last Modified by GUIDE v2.5 06-Nov-2018 12:13:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -165,11 +165,11 @@ load maindata
 load configdata
 
 roi_used = 0;
-newdatamenu     % Processes the new images and does everything else
+newdatamenu_cont     % Processes the new images and does everything else
 
-if inspmsg_state == 1
-    inspmsg;
-end
+% if inspmsg_state == 1
+%     inspmsg;
+% end
 
 guidata(hObject, handles);
 
@@ -2457,17 +2457,193 @@ function menu_exportabsimage_sp2_Callback(hObject, eventdata, handles)
 
 exportabsimage_sp2;
 
+% --- Executes on button press in radiobutton_pca_sp1.
+function radiobutton_pca_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% --- Executes on button press in radiobutton_pca_sp2.
+function radiobutton_pca_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton_pca_sp2
+
+function radiobutton_superpos_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_superpos_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+function radiobutton_superpos_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_superpos_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% --- If Enable == 'on', executes on mouse press in 5 pixel border.
+% --- Otherwise, executes on mouse press in 5 pixel border or over radiobutton_pca_sp1.
+function radiobutton_pca_sp1_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+function radiobutton_pca_sp2_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% --- If Enable == 'on', executes on mouse press in 5 pixel border.
+% --- Otherwise, executes on mouse press in 5 pixel border or over radiobutton_pca_sp1.
+function radiobutton_superpos_sp1_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+function radiobutton_superpos_sp2_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to radiobutton_pca_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+function fr_xwidth_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to fr_xwidth_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of fr_xwidth_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of fr_xwidth_sp1 as a double
+handles.xwidth_sp1 = get(hObject,'String');
+xwidth_sp1 = str2num(handles.xwidth_sp1);
+save('maindata','xwidth_sp1','-append')
+
+% --- Executes during object creation, after setting all properties.
+function fr_xwidth_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to fr_xwidth_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function fr_zwidth_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to fr_zwidth_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of fr_zwidth_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of fr_zwidth_sp1 as a double
+handles.zwidth_sp1 = get(hObject,'String');
+zwidth_sp1 = str2num(handles.zwidth_sp1);
+save('maindata','zwidth_sp1','-append')
+
+% --- Executes during object creation, after setting all properties.
+function fr_zwidth_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to fr_zwidth_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function fr_xwidth_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to fr_xwidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of fr_xwidth_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of fr_xwidth_sp2 as a double
+handles.xwidth_sp2 = get(hObject,'String');
+xwidth_sp2 = str2num(handles.xwidth_sp2);
+save('maindata','xwidth_sp2','-append')
+
+% --- Executes during object creation, after setting all properties.
+function fr_xwidth_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to fr_xwidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function fr_zwidth_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to fr_zwidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of fr_zwidth_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of fr_zwidth_sp2 as a double
+handles.zwidth_sp2 = get(hObject,'String');
+zwidth_sp2 = str2num(handles.zwidth_sp2);
+save('maindata','zwidth_sp2','-append')
+
+% --- Executes during object creation, after setting all properties.
+function fr_zwidth_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to fr_zwidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function edgewidth_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edgewidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edgewidth_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edgewidth_sp2 as a double
+handles.edgewidthsp2 = get(hObject,'String');
+edgewidthsp2 = str2num(handles.edgewidthsp2);
+save('maindata','edgewidthsp2','-append')
+
+% --- Executes during object creation, after setting all properties.
+function edgewidth_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edgewidth_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
 
 % --- Executes on button press in pushbutton_fr_sp1.
 function pushbutton_fr_sp1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_fr_sp1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+pca_sp1 = findobj('Tag','radiobutton_pca_sp1');
+sup_sp1 = findobj('Tag','radiobutton_superpos_sp1');
 
 handles.fr_pressed_sp1 = 1;
 keepROI_option_sp1 = 0;
-
-removefringes_sp1;
+if(get(pca_sp1,'Value') == get(hObject,'Max') && get(sup_sp1,'Value') == get(hObject,'Max'))
+    errordlg({'Slect only one of the Fringe removal methods'},'Bad thing')
+elseif(get(pca_sp1,'Value') == get(hObject,'Max')) 
+    removefringes_PCA_sp1; 
+else
+    removefringes_sp1;
+end
 
 handles.fr_pressed_sp1 = 0;
 
@@ -2480,15 +2656,22 @@ function pushbutton_fr_sp2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+pca_sp2 = findobj('Tag','radiobutton_pca_sp2');
+sup_sp2 = findobj('Tag','radiobutton_superpos_sp2');
+
 handles.fr_pressed_sp2 = 1;
 keepROI_option_sp2 = 0;
-
-removefringes_sp2;
+if(get(pca_sp2,'Value') == get(hObject,'Max') && get(sup_sp2,'Value') == get(hObject,'Max'))
+    errordlg({'Slect only one of the Fringe removal methods'},'Bad thing')
+elseif(get(pca_sp2,'Value') == get(hObject,'Max'))
+    removefringes_PCA_sp2; 
+else
+    removefringes_sp2;
+end
 
 handles.fr_pressed_sp2 = 0;
 
 guidata(hObject, handles);
-
 
 % --- Executes on button press in pushbutton_newdata_sp2.
 function pushbutton_newdata_sp2_Callback(hObject, eventdata, handles)
@@ -2527,9 +2710,9 @@ else
     errordlg({'Single species mode selected. Please check the configuration file.'},'Wrong Mode')
 end
 
-if inspmsg_state == 1
-    inspmsg;
-end
+% if inspmsg_state == 1
+%     inspmsg;
+% end
 
 guidata(hObject, handles);
 
@@ -2773,3 +2956,149 @@ function menu_ploteverything_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 ploteverything;
+
+
+% --- Executes on button press in radiobutton_autoload.
+function radiobutton_autoload_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_autoload (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%if(get(hObject,'Value') == get(hObject,'Max'))
+    %autoloadval = 1;
+%else
+    %autoloadval = 0;
+%end
+%save('maindata','autoloadval','-append')
+
+% Hint: get(hObject,'Value') returns toggle state of radiobutton_autoload
+
+set(handles.pushbutton_stp_autoload, 'userdata', 0);
+
+% --- Executes on button press in pushbutton_stp_autoload.
+function pushbutton_stp_autoload_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_stp_autoload (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.pushbutton_stp_autoload,'userdata',1)
+
+% --- Executes on button press in radiobutton_autoload_bg.
+function radiobutton_autoload_bg_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton_autoload_bg (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if(get(hObject,'Value') == get(hObject,'Max'))
+    autoloadbg = 1;
+else
+    autoloadbg = 0;
+end
+save('maindata','autoloadbg','-append')
+% Hint: get(hObject,'Value') returns toggle state of radiobutton_autoload_bg
+
+
+
+function edit_xclext_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_xclext_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_xclext_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_xclext_sp1 as a double
+xclext_sp1 = str2double(get(hObject,'String'));
+handles.xclext_sp1 = xclext_sp1;
+save('maindata','xclext_sp1','-append');
+
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_xclext_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_xclext_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_zclext_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_zclext_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_zclext_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_zclext_sp1 as a double
+zclext_sp1 = str2double(get(hObject,'String'));
+handles.zclext_sp1 = zclext_sp1;
+save('maindata','zclext_sp1','-append');
+
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_zclext_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_zclext_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_xclext_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_xclext_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_xclext_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_xclext_sp2 as a double
+xclext_sp2 = str2double(get(hObject,'String'));
+handles.xclext_sp2 = xclext_sp2;
+save('maindata','xclext_sp2','-append');
+
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_xclext_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_xclext_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_zclext_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_zclext_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_zclext_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_zclext_sp2 as a double
+zclext_sp2 = str2double(get(hObject,'String'));
+handles.zclext_sp2 = zclext_sp2;
+save('maindata','zclext_sp2','-append');
+
+guidata(hObject,handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_zclext_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_zclext_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
