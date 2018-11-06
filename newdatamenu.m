@@ -8,12 +8,12 @@ load maindata.mat;
 
 %% Solis image naming - rename if needed!
 
-dataA_sp1 = 'Rb001.asc';
-dataB_sp1 = 'Rb002.asc';
-dataC_sp1 = 'Rb003.asc';
-dataA_sp2 = 'data004.asc';
-dataB_sp2 = 'data005.asc';
-dataC_sp2 = 'data006.asc';
+dataA_sp1 = 'data000.asc';
+dataB_sp1 = 'data001.asc';
+dataC_sp1 = 'data002.asc';
+dataA_sp2 = 'data003.asc';
+dataB_sp2 = 'data004.asc';
+dataC_sp2 = 'data005.asc';
 
 
 %% Sync to Dexter
@@ -39,11 +39,11 @@ if (dextersyncValue == 1)
         return
     end
     
-    if counterDexter == 100        
-        inspmsg_state = 1;  
-    else
-        inspmsg_state = 0;
-    end
+%     if counterDexter == 100        
+%         inspmsg_state = 1;  
+%     else
+%         inspmsg_state = 0;
+%     end
     
     handles.counterDexter = num2str(counterDexter);
     set(handles.dexterfilenum,'String',handles.counterDexter);
@@ -59,7 +59,7 @@ if (dextersyncValue == 1)
         
 else
     
-%     counterManual = str2num(handles.edit_counter);
+    counterManual = str2num(handles.edit_counter);
     
     naming = ['_' currentDay currentMonth currentYear '_']; % M is appended when the manual counter is used
     
@@ -241,7 +241,7 @@ end
 plotspecies2 = 0;   % Doesn't plot species 2 until species 2 data is processed
 save('maindata','plotspecies2','-append');
 ana_sp1;    % analysis code
-
+    
 axes(handles.axes_2d_sp1);
 % title(['Absorption image of new data set ' element_sp1 filename_sp1],'Interpreter','none')
 title([element_sp1 filename_sp1],'Interpreter','none')
@@ -250,16 +250,14 @@ axes(handles.axes_2d_sp1);
 caxis(colour_sp1)
 
 if (twospecies == 1)
-    
+
     plotspecies2 = 1;
     plotdata_sp2 = 1;
     save('maindata','plotspecies2','-append');
     ana_sp2;
-    
     axes(handles.axes_2d_sp2);
     title(['Absorption image of new data set ' element_sp2 filename_sp2],'Interpreter','none')
-    colour = str2num(get(handles.edit_ODrange_sp2,'String'));
     axes(handles.axes_2d_sp2);
     caxis(colour)
-    
+
 end

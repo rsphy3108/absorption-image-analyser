@@ -17,7 +17,8 @@ currentDay = num2str(day(date),'%02d');
 
 if windows
     pathname_olddata = [storagePath '\' currentYear '\' currentMonth '\'];
-    [filename_sp2,pathname_olddata] = uigetfile([pathname_olddata '\*.asc']);
+    %[filename_sp2,pathname_olddata] = uigetfile([pathname_olddata '\*.asc']);
+    [filename_sp2,pathname_olddata] = uigetfile([pathname_olddata '\a' element_sp2 '*.asc']);
 else
     pathname_olddata = [storagePath '/' currentYear '/' currentMonth '/'];
     [filename_sp2,pathname_olddata] = uigetfile([pathname_olddata '/*.asc']);

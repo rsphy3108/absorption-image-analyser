@@ -8,9 +8,9 @@ load maindata.mat;
 
 %% Solis image naming
 
-dataA_sp2 = 'data004.asc';
-dataB_sp2 = 'data005.asc';
-dataC_sp2 = 'data006.asc';
+dataA_sp2 = 'data003.asc';
+dataB_sp2 = 'data004.asc';
+dataC_sp2 = 'data005.asc';
 
 
 %% Sync to Dexter
