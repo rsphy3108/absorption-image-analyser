@@ -5,16 +5,16 @@
 load configdata.mat;
 load maindata.mat;
 
-autoloadobj = findobj('Tag','radiobutton_autoload');
-
-if(get(autoloadobj,'Value') == get(hObject,'Max'))
-    autoloadval = 1;
-else
-    autoloadval = 0;
-end
-
-% ii = 0;
-if(autoloadval == 1)
+ if (dextersyncValue == 1)    
+            syncID = fopen([dexterSyncPath dexterSyncFile]);
+            curr_counterDexter = cell2mat(textscan(syncID,'%f'));
+            fclose(syncID);
+ end
+ 
+ prev_counterDexter = curr_counterDexter;
+ 
+%ii = 0;
+if(autoloadval == 1)        
     while(autoloadval == 1)
         pause(0.1);
         drawnow
@@ -28,15 +28,15 @@ if(autoloadval == 1)
             fclose(syncID);
         end
         if(curr_counterDexter > prev_counterDexter)
-            pause(5);
+            disp('found new data');
+            pause(4);
             newdatamenu;
             prev_counterDexter = curr_counterDexter; 
-            save('maindata','prev_counterDexter','-append');
-        else
+            %save('maindata','prev_counterDexter','-append');
+        else                
             continue
         end
-%     ii = ii+1;
-%     disp(['Hello while' num2str(ii)])    
+            
     end
 else
     if (dextersyncValue == 1)    

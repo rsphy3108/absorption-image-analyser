@@ -5,11 +5,18 @@
 load configdata.mat;
 load maindata.mat;
 
-autoloadval = 1;
+autoload = 1;
 
-% ii = 0;
-
-    while(autoloadval == 1)
+ if (dextersyncValue == 1)    
+            syncID = fopen([dexterSyncPath dexterSyncFile]);
+            curr_counterDexter = cell2mat(textscan(syncID,'%f'));
+            fclose(syncID);
+ end
+ 
+ prev_counterDexter = curr_counterDexter;
+ %save('maindata','prev_counterDexter','-append');
+ 
+    while(autoload == 1)
         pause(0.1);
         drawnow
         if get(handles.pushbutton_stop_autoload, 'userdata') % stop condition
@@ -22,10 +29,11 @@ autoloadval = 1;
             fclose(syncID);
         end
         if(curr_counterDexter > prev_counterDexter)
+            disp('found new data');
             pause(5);
             Autoload_newdatamenu;
             prev_counterDexter = curr_counterDexter; 
-            save('maindata','prev_counterDexter','-append');
+            %save('maindata','prev_counterDexter','-append');
         else
             continue
         end

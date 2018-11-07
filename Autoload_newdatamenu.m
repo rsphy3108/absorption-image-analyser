@@ -46,11 +46,11 @@ if (dextersyncValue == 1)
 %     end
     
     handles.counterDexter = num2str(counterDexter);
-    set(handles.dexterfilenum,'String',handles.counterDexter);
+    %set(handles.dexterfilenum,'String',handles.counterDexter);
     
     if twospecies == 1
         handles.counterDexter_sp2 = num2str(counterDexter);
-        set(handles.text_dexterfilenum_sp2,'String',handles.counterDexter_sp2);
+        %set(handles.text_dexterfilenum_sp2,'String',handles.counterDexter_sp2);
     end
     
     naming = ['_' currentDay currentMonth currentYear '_'];

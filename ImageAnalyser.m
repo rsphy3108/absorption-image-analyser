@@ -2963,12 +2963,12 @@ function radiobutton_autoload_Callback(hObject, eventdata, handles)
 % hObject    handle to radiobutton_autoload (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-%if(get(hObject,'Value') == get(hObject,'Max'))
-    %autoloadval = 1;
-%else
-    %autoloadval = 0;
-%end
-%save('maindata','autoloadval','-append')
+if(get(hObject,'Value') == get(hObject,'Max'))
+    autoloadval = 1;
+else
+    autoloadval = 0;
+end
+save('maindata','autoloadval','-append')
 
 % Hint: get(hObject,'Value') returns toggle state of radiobutton_autoload
 
