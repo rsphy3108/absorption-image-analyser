@@ -58,7 +58,7 @@ horizontalsizetrap = horizontalsize /sqrt(1+(2.0*pi*xfreq_sp2*tof_sp2*1.0e-3)^2)
 Tv = mass*(2.0*pi*zfreq_sp2*verticalsizetrap*(2^0.5)).^2/(2*kB);
 Th = mass*(2.0*pi*xfreq_sp2*horizontalsizetrap*(2^0.5)).^2/ (2*kB);
 
-pixel_sum_processing_sp1
+pixel_sum_processing_sp2
 
 switch analysis_type_sp2
     

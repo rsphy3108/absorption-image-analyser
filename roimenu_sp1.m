@@ -21,25 +21,25 @@ offset = abs(p1 - p2);
 
 xcamerapixel_sp1 = p1(1);
 ycamerapixel_sp1 = p1(2);
-xwidth_sp1 = offset(1);
+x_H_width_sp1 = offset(1);
 yheight_sp1 = offset(2);
 
 % If square ROI is chosen
 if (get(handles.checkbox_square_sp1,'Value') == 1)
-    xwidth_sp1 = max([xwidth_sp1 yheight_sp1]);
-    yheight_sp1 = max([xwidth_sp1 yheight_sp1]);
+    x_H_width_sp1 = max([x_H_width_sp1 yheight_sp1]);
+    yheight_sp1 = max([x_H_width_sp1 yheight_sp1]);
 end
 
-set(handles.text_coordvalues_sp1,'String',[num2str(xcamerapixel_sp1) ',' num2str(ycamerapixel_sp1) ',' num2str(xwidth_sp1) ',' num2str(yheight_sp1)]);
+set(handles.text_coordvalues_sp1,'String',[num2str(xcamerapixel_sp1) ',' num2str(ycamerapixel_sp1) ',' num2str(x_H_width_sp1) ',' num2str(yheight_sp1)]);
 
 % ROI box
 ax_sp1(1) = round(xcamerapixel_sp1);
-ax_sp1(2) = round(xcamerapixel_sp1 + xwidth_sp1);
+ax_sp1(2) = round(xcamerapixel_sp1 + x_H_width_sp1);
 ax_sp1(3) = round(ycamerapixel_sp1);
 ax_sp1(4) = round(ycamerapixel_sp1 + yheight_sp1);
 
 % Store ROI limits
-save('maindata','ax_sp1','yheight_sp1','xwidth_sp1','xcamerapixel_sp1','ycamerapixel_sp1','-append');
+save('maindata','ax_sp1','yheight_sp1','x_H_width_sp1','xcamerapixel_sp1','ycamerapixel_sp1','-append');
 
 Anew = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
 Bnew = B(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
@@ -73,10 +73,10 @@ else
     waitforbuttonpress
 end
 
-if ((centerxnew > 0) && (centerxnew < xwidth_sp1))   % checks if fit led to a centre inside the ROI box
+if ((centerxnew > 0) && (centerxnew < x_H_width_sp1))   % checks if fit led to a centre inside the ROI box
     crossznew = Anew(:,centerxnew)';
 else
-    crossznew = Anew(:,round(xwidth_sp1/2))';
+    crossznew = Anew(:,round(x_H_width_sp1/2))';
     msgbox('Bad fit along z!','Warning','error')
     waitforbuttonpress
 end

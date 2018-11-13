@@ -1,9 +1,31 @@
+
 % keeproi_sp1.m
 % Shows data with most recent ROI instead of resizing.
 
+if(manual_roi_sp1==1)
+    p1 = [roi_xmin_sp1 roi_zmin_sp1];
+    p2 = [roi_xmax_sp1 roi_zmax_sp1];
+    offset = abs(p1 - p2); 
+    xcamerapixel_sp1 = p1(1);
+    ycamerapixel_sp1 = p1(2);
+    x_H_width_sp1 = offset(1);
+    yheight_sp1 = offset(2);
+
+    % If square ROI is chosen
+    if (get(handles.checkbox_square_sp1,'Value') == 1)
+        x_H_width_sp1 = max([x_H_width_sp1 yheight_sp1]);
+        yheight_sp1 = max([x_H_width_sp1 yheight_sp1]);
+    end
+    
+    ax_sp1(1) = round(xcamerapixel_sp1);
+    ax_sp1(2) = round(xcamerapixel_sp1 + x_H_width_sp1);
+    ax_sp1(3) = round(ycamerapixel_sp1);
+    ax_sp1(4) = round(ycamerapixel_sp1 + yheight_sp1);
+end
+
 
 if handles.fr_pressed_sp1 == 1
-    Anew = A;
+    Anew = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
 else
     Anew = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));  % ax_sp1 defines the ROI
     Bnew = B(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));

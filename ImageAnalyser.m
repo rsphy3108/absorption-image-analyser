@@ -22,7 +22,7 @@ function varargout = ImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help ImageAnalyser
 
-% Last Modified by GUIDE v2.5 06-Nov-2018 12:13:30
+% Last Modified by GUIDE v2.5 12-Nov-2018 09:58:35
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -682,6 +682,22 @@ olddatamenu_sp1;
 
 guidata(hObject, handles);
 
+% --- Executes on button press in checkbox_manual_roi_sp1.
+function checkbox_manual_roi_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_roi_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_roi_sp1
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_roi_sp1 = 1;     % Use ROI
+else
+    handles.manual_roi_sp1 = 0;     % Don't use ROI
+end
+
+manual_roi_sp1 = handles.manual_roi_sp1;
+
+save('maindata','manual_roi_sp1','-append');
 
 % --- Executes on button press in pushbutton_setroi_sp1.
 function pushbutton_setroi_sp1_Callback(hObject, eventdata, handles)
@@ -689,11 +705,16 @@ function pushbutton_setroi_sp1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.setROI_pressed_sp1 = 1;
-keepROI_option_sp1 = 0;
-roimenu_sp1;
-handles.setROI_pressed_sp1 = 0;
+load maindata manual_roi_sp1;
 
+if(manual_roi_sp1 == 1)
+       errordlg({'Use following ROI is selected'},'Bad thing')
+else
+    handles.setROI_pressed_sp1 = 1;
+    keepROI_option_sp1 = 0;
+    roimenu_sp1;
+    handles.setROI_pressed_sp1 = 0;
+end
 guidata(hObject, handles);
 
 % --- Executes on button press in checkbox_square_sp1.
@@ -1260,6 +1281,22 @@ function pushbutton9_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+% --- Executes on button press in checkbox_manual_roi_sp2.
+function checkbox_manual_roi_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_roi_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_roi_sp2
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_roi_sp2 = 1;     % Use ROI
+else
+    handles.manual_roi_sp2 = 0;     % Don't use ROI
+end
+
+manual_roi_sp2 = handles.manual_roi_sp2;
+
+save('maindata','manual_roi_sp2','-append');
 
 % --- Executes on button press in pushbutton_setroi_sp2.
 function pushbutton_setroi_sp2_Callback(hObject, eventdata, handles)
@@ -1267,13 +1304,17 @@ function pushbutton_setroi_sp2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.setROI_pressed_sp2 = 1;
-keepROI_option_sp2 = 0;
-roimenu_sp2
-handles.setROI_pressed_sp2 = 0;
+load maindata manual_roi_sp2;
 
+if(manual_roi_sp2 == 1)
+       errordlg({'Use following ROI is selected'},'Bad thing')
+else
+    handles.setROI_pressed_sp2 = 1;
+    keepROI_option_sp2 = 0;
+    roimenu_sp2;
+    handles.setROI_pressed_sp2 = 0;
+end
 guidata(hObject, handles);
-
 
 % --- Executes on button press in checkbox_useROI_sp2.
 function checkbox_useROI_sp2_Callback(hObject, eventdata, handles)
@@ -3094,6 +3135,214 @@ guidata(hObject,handles);
 % --- Executes during object creation, after setting all properties.
 function edit_zclext_sp2_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit_zclext_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_xmin_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmin_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_xmin_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_xmin_sp1 as a double
+roi_xmin_sp1 = str2double(get(hObject,'String'));
+handles.edit_roi_xmin_sp1 = roi_xmin_sp1;
+save('maindata','roi_xmin_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_xmin_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmin_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_xmax_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmax_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_xmax_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_xmax_sp1 as a double
+roi_xmax_sp1 = str2double(get(hObject,'String'));
+handles.edit_roi_xmax_sp1 = roi_xmax_sp1;
+save('maindata','roi_xmax_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_xmax_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmax_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_zmin_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmin_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_zmin_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_zmin_sp1 as a double
+roi_zmin_sp1 = str2double(get(hObject,'String'));
+handles.edit_roi_zmin_sp1 = roi_zmin_sp1;
+save('maindata','roi_zmin_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_zmin_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmin_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_zmax_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmax_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_zmax_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_zmax_sp1 as a double
+roi_zmax_sp1 = str2double(get(hObject,'String'));
+handles.edit_roi_zmax_sp1 = roi_zmax_sp1;
+save('maindata','roi_zmax_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_zmax_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmax_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function edit_roi_xmin_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmin_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_xmin_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_xmin_sp2 as a double
+roi_xmin_sp2 = str2double(get(hObject,'String'));
+handles.edit_roi_xmin_sp2 = roi_xmin_sp2;
+save('maindata','roi_xmin_sp2','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_xmin_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmin_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_xmax_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmax_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_xmax_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_xmax_sp2 as a double
+roi_xmax_sp2 = str2double(get(hObject,'String'));
+handles.edit_roi_xmax_sp2 = roi_xmax_sp2;
+save('maindata','roi_xmax_sp2','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_xmax_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_xmax_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_zmin_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmin_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_zmin_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_zmin_sp2 as a double
+roi_zmin_sp2 = str2double(get(hObject,'String'));
+handles.edit_roi_zmin_sp2 = roi_zmin_sp2;
+save('maindata','roi_zmin_sp2','-append');
+guidata(hObject,handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_zmin_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmin_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_roi_zmax_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmax_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_roi_zmax_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_roi_zmax_sp2 as a double
+roi_zmax_sp2 = str2double(get(hObject,'String'));
+handles.edit_roi_zmax_sp2 = roi_zmax_sp2;
+save('maindata','roi_zmax_sp2','-append');
+guidata(hObject,handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_roi_zmax_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_roi_zmax_sp2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
