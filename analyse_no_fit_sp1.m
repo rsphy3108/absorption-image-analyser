@@ -56,9 +56,16 @@ switch analysis_type_sp1
 end
 
 
-A_temp = imgaussfilt(A, smoth_sigma);
-maximum = max(max(A_temp));
-[z, x] = find(A_temp==maximum);
+
+if(manual_cntr_sp1==1)
+    %Gaussian filtering
+    A_temp = imgaussfilt(A, smoth_sigma);
+    maximum = max(max(A_temp));
+    [z, x] = find(A_temp==maximum);
+else
+    z = ctr_z_sp1;
+    x = ctr_x_sp1;
+end    
 
 if(z-at_zwidth/2 < 1)
     zmin = 1;

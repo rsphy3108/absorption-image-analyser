@@ -22,7 +22,7 @@ function varargout = OfflineImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help OfflineImageAnalyser
 
-% Last Modified by GUIDE v2.5 31-Oct-2018 13:06:21
+% Last Modified by GUIDE v2.5 19-Nov-2018 12:45:44
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -769,3 +769,141 @@ else
     no_overwrite = 0;
 end
 save('offlineconfigdata','no_overwrite','-append');
+
+
+% --- Executes on button press in checkbox_manual_cntr_sp1.
+function checkbox_manual_cntr_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_cntr_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_cntr_sp1
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_cntr_sp1 = 1;     % Use the entered position as center for pixel sum. 
+else
+    handles.manual_cntr_sp1 = 0;     % Find the center automatically
+end
+
+manual_cntr_sp1 = handles.manual_cntr_sp1;
+
+save('offlineconfigdata','manual_cntr_sp1','-append');
+
+
+function edit_ctr_x_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_x_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_ctr_x_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_ctr_x_sp1 as a double
+ctr_x_sp1 = str2double(get(hObject,'String'));
+handles.ctr_x_sp1 = ctr_x_sp1;
+save('offlineconfigdata','ctr_x_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_ctr_x_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_x_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_ctr_z_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_z_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_ctr_z_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_ctr_z_sp1 as a double
+ctr_z_sp1 = str2double(get(hObject,'String'));
+handles.ctr_z_sp1 = ctr_z_sp1;
+save('offlineconfigdata','ctr_z_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_ctr_z_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_z_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in checkbox_manual_cntr_sp2.
+function checkbox_manual_cntr_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_cntr_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_cntr_sp2
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_cntr_sp2 = 1;     % Use the entered position as center for pixel sum. 
+else
+    handles.manual_cntr_sp2 = 0;     % Find the center automatically
+end
+
+manual_cntr_sp2 = handles.manual_cntr_sp2;
+
+save('offlineconfigdata','manual_cntr_sp2','-append');
+
+
+function edit_ctr_x_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_x_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_ctr_x_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_ctr_x_sp2 as a double
+ctr_x_sp2 = str2double(get(hObject,'String'));
+handles.ctr_x_sp2 = ctr_x_sp2;
+save('offlineconfigdata','ctr_x_sp2','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_ctr_x_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_x_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_ctr_z_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_z_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_ctr_z_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_ctr_z_sp2 as a double
+ctr_z_sp2 = str2double(get(hObject,'String'));
+handles.ctr_z_sp2 = ctr_z_sp2;
+save('offlineconfigdata','ctr_z_sp2','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_ctr_z_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_ctr_z_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end

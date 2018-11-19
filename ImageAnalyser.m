@@ -22,7 +22,7 @@ function varargout = ImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help ImageAnalyser
 
-% Last Modified by GUIDE v2.5 12-Nov-2018 09:58:35
+% Last Modified by GUIDE v2.5 19-Nov-2018 12:18:08
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -3343,6 +3343,139 @@ guidata(hObject,handles);
 % --- Executes during object creation, after setting all properties.
 function edit_roi_zmax_sp2_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit_roi_zmax_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in checkbox_manual_center_sp1.
+function checkbox_manual_center_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_center_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_center_sp1 = 1;     % Use the entered position as center for pixel sum. 
+else
+    handles.manual_center_sp1 = 0;     % Find the center automatically
+end
+
+manual_center_sp1 = handles.manual_center_sp1;
+
+save('maindata','manual_center_sp1','-append');
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_center_sp1
+
+function edit_px_sum_ctr_x_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_x_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_px_sum_ctr_x_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_px_sum_ctr_x_sp1 as a double
+px_sum_ctr_x_sp1 = str2double(get(hObject,'String'));
+handles.px_sum_ctr_x_sp1 = px_sum_ctr_x_sp1;
+save('maindata','px_sum_ctr_x_sp1','-append');
+guidata(hObject,handles);
+
+function edit_px_sum_ctr_z_sp1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_z_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_px_sum_ctr_z_sp1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_px_sum_ctr_z_sp1 as a double
+px_sum_ctr_z_sp1 = str2double(get(hObject,'String'));
+handles.px_sum_ctr_z_sp1 = px_sum_ctr_z_sp1;
+save('maindata','px_sum_ctr_z_sp1','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_px_sum_ctr_x_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_x_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_px_sum_ctr_z_sp1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_z_sp1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in checkbox_manual_center_sp2.
+function checkbox_manual_center_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_manual_center_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if (get(hObject,'Value') == get(hObject,'Max'))
+    handles.manual_center_sp2 = 1;     % Use the entered position as center for pixel sum. 
+else
+    handles.manual_center_sp2 = 0;     % Find the center automatically
+end
+
+manual_center_sp2 = handles.manual_center_sp2;
+
+save('maindata','manual_center_sp2','-append');
+% Hint: get(hObject,'Value') returns toggle state of checkbox_manual_center_sp2
+
+
+
+function edit_px_sum_ctr_x_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_x_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_px_sum_ctr_x_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_px_sum_ctr_x_sp2 as a double
+px_sum_ctr_x_sp2 = str2double(get(hObject,'String'));
+handles.px_sum_ctr_x_sp2 = px_sum_ctr_x_sp2;
+save('maindata','px_sum_ctr_x_sp2','-append');
+guidata(hObject,handles);
+
+function edit_px_sum_ctr_z_sp2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_z_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_px_sum_ctr_z_sp2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_px_sum_ctr_z_sp2 as a double
+px_sum_ctr_z_sp2 = str2double(get(hObject,'String'));
+handles.px_sum_ctr_z_sp2 = px_sum_ctr_z_sp2;
+save('maindata','px_sum_ctr_z_sp2','-append');
+guidata(hObject,handles);
+
+% --- Executes during object creation, after setting all properties.
+function edit_px_sum_ctr_x_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_x_sp2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+% --- Executes during object creation, after setting all properties.
+function edit_px_sum_ctr_z_sp2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_px_sum_ctr_z_sp2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
