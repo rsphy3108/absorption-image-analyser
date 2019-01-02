@@ -9,7 +9,8 @@ if(manual_roi_sp2==1)
     ycamerapixel_sp2 = p1(2);
     x_H_width_sp2 = offset(1);
     yheight_sp2 = offset(2);
-
+    
+    
     % If square ROI is chosen
     if (get(handles.checkbox_square_sp2,'Value') == 1)
         x_H_width_sp2 = max([x_H_width_sp2 yheight_sp2]);
@@ -25,11 +26,12 @@ end
 if handles.fr_pressed_sp2 == 1
     Anew = A(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
 else
+    %disp(size(A))
     Anew = A(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));  % ax_sp2 defines the ROI
     Bnew = B(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
 end
 
-disp(size(Anew));
+%disp(size(Anew));
 Inew1 = sum(Anew);
 Anew = Anew';
 Inew2 = sum(Anew);
@@ -54,16 +56,16 @@ if ((centerznew > 0) && (centerznew < yheight_sp2))  % checks if fit led to a ce
     crossxnew = Anew(centerznew,:);
 else
     crossxnew = Anew(round(yheight_sp2/2),:);
-    msgbox('Bad fit along x!','Warning','error')
-    waitforbuttonpress
+    %msgbox('Bad fit along x!','Warning','error')
+    %waitforbuttonpress
 end
 
 if ((centerxnew > 0) && (centerxnew < xwidth_sp2))   % checks if fit led to a centre inside the ROI box
     crossznew = Anew(:,centerxnew)';
 else
     crossznew = Anew(:,round(xwidth_sp2/2))';
-    msgbox('Bad fit along z!','Warning','error')
-    waitforbuttonpress
+    %msgbox('Bad fit along z!','Warning','error')
+    %waitforbuttonpress
 end
 
 c1 = findsta(crossxnew);
@@ -142,6 +144,7 @@ crosszfit = crosszfitnew;
 A = Anew;
 B = Bnew;
 
+save('maindata','ax_sp2','yheight_sp2','x_H_width_sp2','xcamerapixel_sp2','ycamerapixel_sp2','-append');
 fitnewsave_sp2
 
 % Update calculated information in GUI

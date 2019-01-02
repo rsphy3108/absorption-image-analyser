@@ -1443,9 +1443,9 @@ olddatamenu_sp2;    % unfinished!
 
 load maindata.mat
 
-if useROI_sp2 == 1
-    keeproi_sp2;
-end
+%if useROI_sp2 == 1
+%    keeproi_sp2;
+%end
 
 guidata(hObject, handles);
 

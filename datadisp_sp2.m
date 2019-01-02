@@ -4,7 +4,6 @@
 load configdata.mat
 load maindata.mat
 
-
 %% Calculating number
 
 kB = 1.38e-23;

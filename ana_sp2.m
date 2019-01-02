@@ -1,16 +1,16 @@
 % ana_sp2.m
 % Analyses image data and calls other relevant routines for species 2.
 
-if handles.fr_pressed_sp2 == 0
-    
-    if (handles.olddata == 0)
-        
-        A = D;
-        B = E;
-        C = F;
-        
-    end
-end
+% if handles.fr_pressed_sp2 == 0
+%     
+%     if (handles.olddata == 0)
+%         
+%         A = D;
+%         B = E;
+%         C = F;
+%         
+%     end
+% end
 
 load configdata.mat
 load maindata.mat

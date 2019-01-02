@@ -12,14 +12,19 @@ smoth_sigma = [1,3]; %Standard deviation (in pixels) of the gaussian filter used
 at_zwidth = zclext_sp2;
 at_xwidth = xclext_sp2;
 
-if(manual_center_sp1==1)
+if(manual_center_sp2==0)
     %Gaussian filtering
     A_temp = imgaussfilt(A, smoth_sigma);
     maximum = max(max(A_temp));
     [z, x] = find(A_temp==maximum);
 else
-    z = px_sum_ctr_z_sp2;
-    x = px_sum_ctr_x_sp2;
+    if(roi_used == 1)
+        z = round(px_sum_ctr_z_sp2 - ycamerapixel_sp2);
+        x = round(px_sum_ctr_x_sp2 - xcamerapixel_sp2);
+    else
+        z = round(px_sum_ctr_z_sp2);
+        x = round(px_sum_ctr_x_sp2);
+    end
 end   
 
 %Define the atom region
@@ -54,6 +59,7 @@ A_at = A(zmin:zmax,xmin:xmax);
 bg_mean = sum(sum(A_bg))/(numel(A_bg)-numel(A_at));
 at_sum = sum(sum(A_at - bg_mean));
 
+%disp([z, x])
 
 clear x z %temporary variables, not needed any more;
 
